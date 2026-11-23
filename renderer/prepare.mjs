@@ -1,7 +1,8 @@
-// Prepares a render (docs/VISUAL_UPGRADE.md §6): ONE voice track for the whole narration (ElevenLabs with character
-// timings), beat frames from word timings, per-frame mouth data, caption pages, photos, sfx, music -> props.json.
-// Usage (inside the session): node /opt/clipdesk-video/prepare.mjs   -> /work/build/props.json + /work/build/public/
-// Exit code 2 + message on stderr = cannot make this video (write a user-safe line to /work/out/error.txt).
+// Prepares a render: ONE voice track for the whole narration (ElevenLabs with character timings when the user has a
+// key, otherwise the free local Kokoro voice, spoken shot by shot), beat frames from word timings, per-frame mouth data,
+// caption pages, photos, sfx, music -> props.json.
+// Usage (in a genreel session): WORK_DIR=<project>/work node <renderer>/prepare.mjs -> build/props.json + build/public/
+// Exit code 2 + message on stderr = cannot make this video (write a short line to out/error.txt).
 import { execFileSync } from "node:child_process";
 import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, extname, join, normalize } from "node:path";
@@ -9,7 +10,7 @@ import { fileURLToPath } from "node:url";
 import { mouthFromAudio } from "./mouth.mjs";
 
 const FPS = 30, ANTICIPATION = 3, MIN_BEAT = 36, TAIL = 20, END_CARD = 60;
-const WORK = process.env.WORK_DIR || "/work";
+const WORK = process.env.WORK_DIR || process.cwd();
 const HERE = dirname(fileURLToPath(import.meta.url));
 const brief = JSON.parse(readFileSync(`${WORK}/input/brief.json`, "utf8"));
 const { script, brand = {}, width, height, max_seconds } = brief;
@@ -41,6 +42,37 @@ async function tts(text) {
   });
 }
 
+// Free local voice (Kokoro). Each shot is spoken separately, so shot boundaries are exact; inside a shot, character
+// times are spread evenly (good enough for word-by-word captions). Writes voice.mp3, returns an ElevenLabs-like alignment.
+const KOKORO_VOICES = {
+  en: { warm_female: "af_heart", calm_male: "am_michael", energetic_female: "af_bella", energetic_male: "am_puck" },
+  hi: { warm_female: "hf_alpha", calm_male: "hm_omega", energetic_female: "hf_beta", energetic_male: "hm_psi" },
+};
+const KOKORO_LANG = { en: "en-us", hi: "hi" };
+function localVoice(texts) {
+  if (!KOKORO_LANG[lang]) fail(`no free local voice for "${lang}"; add an ElevenLabs key in genreel Settings`);
+  const py = process.env.GENREEL_PYTHON, voices = process.env.GENREEL_VOICES;
+  if (!py || !voices) fail("the free voice is not installed; open genreel's Setup page");
+  const python = process.platform === "win32" ? join(py, "Scripts", "python.exe") : join(py, "bin", "python");
+  const wav = `${pub}/vo/voice.wav`;
+  let res;
+  try {
+    res = JSON.parse(execFileSync(python, [join(HERE, "tts_kokoro.py")], {
+      input: JSON.stringify({ texts, voice: (KOKORO_VOICES[lang] ?? KOKORO_VOICES.en)[script.voice] ?? KOKORO_VOICES[lang].warm_female, lang: KOKORO_LANG[lang],
+        model: join(voices, "kokoro-v1.0.onnx"), voices: join(voices, "voices-v1.0.bin"), out: wav }),
+      encoding: "utf8", maxBuffer: 1 << 20, stdio: ["pipe", "pipe", "inherit"],
+    }));
+  } catch (e) { fail(`voice failed: ${e.message}`); }
+  execFileSync("ffmpeg", ["-nostdin", "-v", "error", "-y", "-i", wav, "-c:a", "libmp3lame", "-b:a", "128k", `${pub}/vo/voice.mp3`]);
+  const characters = [], character_start_times_seconds = [], character_end_times_seconds = [];
+  texts.forEach((text, i) => {
+    const { start, end } = res.shots[i], step = (end - start) / Math.max(1, text.length);
+    if (i > 0) { characters.push(" "); character_start_times_seconds.push(start); character_end_times_seconds.push(start); }
+    [...text].forEach((c, k) => { characters.push(c); character_start_times_seconds.push(start + k * step); character_end_times_seconds.push(start + (k + 1) * step); });
+  });
+  return { alignment: { characters, character_start_times_seconds, character_end_times_seconds } };
+}
+
 const probe = (f) => Number(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f], { encoding: "utf8" }));
 const fr = (t) => Math.round(t * FPS);
 
@@ -50,8 +82,11 @@ const narrations = script.beats.map((b) => b.narration.trim().replace(/\s+/g, " 
 const beatWordCounts = narrations.map((n) => n.split(" ").filter(Boolean).length);
 const narration = narrations.join(" ");
 const voiceFile = process.env.VOICE_FILE; // tests/samples may pass a recorded file + alignment instead of calling TTS
-const t = voiceFile ? JSON.parse(readFileSync(process.env.ALIGNMENT_FILE, "utf8")) : await tts(narration).catch((e) => fail(`voice failed: ${e.message}`));
-if (voiceFile) copyFileSync(voiceFile, `${pub}/vo/voice.mp3`); else writeFileSync(`${pub}/vo/voice.mp3`, Buffer.from(t.audio_base64, "base64"));
+const useEleven = Boolean(process.env.ELEVENLABS_API_KEY);
+const t = voiceFile ? JSON.parse(readFileSync(process.env.ALIGNMENT_FILE, "utf8"))
+  : useEleven ? await tts(narration).catch((e) => fail(`voice failed: ${e.message}`))
+  : localVoice(narrations);
+if (voiceFile) copyFileSync(voiceFile, `${pub}/vo/voice.mp3`); else if (t.audio_base64) writeFileSync(`${pub}/vo/voice.mp3`, Buffer.from(t.audio_base64, "base64"));
 let audioLen = probe(`${pub}/vo/voice.mp3`);
 
 let words = [];
@@ -177,12 +212,12 @@ const beats = script.beats.map((b, i) => {
 
 const logo = upload(brand.logo_path, "logo");
 let music = null;
-const musicDir = brief.music_dir || "/assets/music";
+const musicDir = brief.music_dir || join(process.env.GENREEL_ASSETS || join(HERE, "../assets"), "music");
 if (script.music !== "none" && existsSync(`${musicDir}/manifest.json`)) {
   const track = JSON.parse(readFileSync(`${musicDir}/manifest.json`, "utf8")).find((m) => m.mood === script.music);
   if (track && existsSync(`${musicDir}/${track.file}`)) { music = `music${extname(track.file)}`; copyFileSync(`${musicDir}/${track.file}`, `${pub}/${music}`); }
 }
-const sfxDir = existsSync("/assets/sfx") ? "/assets/sfx" : join(HERE, "../../assets/sfx");
+const sfxDir = join(process.env.GENREEL_ASSETS || join(HERE, "../assets"), "sfx");
 const sfx = {};
 for (const n of ["whoosh", "pop", "tick", "ding", "thud", "swipe"]) if (existsSync(`${sfxDir}/${n}.wav`)) { copyFileSync(`${sfxDir}/${n}.wav`, `${pub}/sfx/${n}.wav`); sfx[n] = `sfx/${n}.wav`; }
 
@@ -199,6 +234,6 @@ const props = {
   music, voice: "vo/voice.mp3", total, contentEnd, beats, mouth: mouthFromAudio(`${pub}/vo/voice.mp3`, FPS, total), speech, sfx,
 };
 writeFileSync(`${WORK}/build/props.json`, JSON.stringify(props));
-writeFileSync(`${WORK}/out/usage.json`, JSON.stringify({ elevenlabs_characters: voiceFile ? 0 : narration.length }));
+writeFileSync(`${WORK}/out/usage.json`, JSON.stringify({ voice: voiceFile ? "file" : useEleven ? "elevenlabs" : "kokoro", characters: narration.length }));
 const lens = beats.map((b) => b.to - b.from);
 console.log(`ok: ${beats.length} beats, ${(total / FPS).toFixed(1)}s (${total} frames), beat ${Math.min(...lens)}-${Math.max(...lens)} frames, ${beats.reduce((n, b) => n + b.pages.length, 0)} caption pages, photos: ${beats.filter((b) => b.photo).length}, logo: ${!!logo}, music: ${!!music}`);

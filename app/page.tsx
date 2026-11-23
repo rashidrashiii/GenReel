@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { checks, ready } from "@/lib/setup";
 import { getI18n } from "@/lib/i18n-server";
 import { listProjects } from "@/lib/store";
 
@@ -10,6 +12,8 @@ const BADGE: Record<string, string> = { draft_pending: "working", draft_ready: "
 export default async function Home() {
   const { t } = await getI18n();
   const projects = await listProjects();
+  // First run: nothing made yet and something needed is missing, so start at Setup.
+  if (!projects.length && !ready(await checks())) redirect("/setup");
   const date = new Intl.DateTimeFormat(undefined, { day: "numeric", month: "short", year: "numeric" });
   return (
     <>

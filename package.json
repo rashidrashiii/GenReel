@@ -4,15 +4,20 @@
   "description": "Describe a video, check the script, and your own Claude Code makes a narrated, captioned animated video on your computer.",
   "license": "MIT",
   "type": "module",
-  "bin": { "genreel": "bin/genreel.mjs" },
-  "engines": { "node": ">=20" },
+  "bin": {
+    "genreel": "bin/genreel.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "next dev -p 3311",
     "build": "next build",
     "start": "node bin/genreel.mjs",
     "lint": "eslint",
     "test": "node --import tsx --test test/*.test.ts",
-    "check": "tsc --noEmit && eslint && npm test"
+    "check": "tsc --noEmit && eslint && npm test",
+    "prepack": "next build"
   },
   "dependencies": {
     "ajv": "^8.17.1",
@@ -29,5 +34,27 @@
     "eslint-config-next": "16.4.6",
     "tsx": "^4.20.0",
     "typescript": "5.9.3"
-  }
+  },
+  "files": [
+    "bin",
+    "app",
+    "components",
+    "lib",
+    "messages",
+    "renderer",
+    "!renderer/node_modules",
+    "session",
+    "assets",
+    "public",
+    "proxy.ts",
+    "instrumentation.ts",
+    "next.config.ts",
+    "tsconfig.json",
+    "next-env.d.ts",
+    ".next",
+    "!.next/cache",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY.md"
+  ]
 }
