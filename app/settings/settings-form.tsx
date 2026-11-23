@@ -7,6 +7,16 @@ type S = { scriptModel: string; videoModel: string; language: string; videoMinut
 
 const MINUTES = [30, 45, 60, 90, 120];
 
+/** One collapsible row per setting; closed, it still shows what is chosen. */
+function Section({ title, value, children }: { title: string; value: string; children: React.ReactNode }) {
+  return (
+    <details className="panel setting">
+      <summary><span className="setting-title">{title}</span><span className="setting-value">{value}</span></summary>
+      <div className="setting-body">{children}</div>
+    </details>
+  );
+}
+
 export function SettingsForm({ initial, models, home }: { initial: S; models: Model[]; home: string }) {
   const { t } = useT();
   const id = useId();
@@ -32,16 +42,22 @@ export function SettingsForm({ initial, models, home }: { initial: S; models: Mo
     setMsg(res?.ok ? { text: "settings.keyWorks" } : { text: body?.error ?? "errors.network", error: true });
   }
 
+  const nameOf = (mid: string) => models.find((m) => m.id === mid)?.name ?? mid;
+
   return (
     <>
-      <section className="panel" aria-labelledby={`${id}-claude`}>
-        <h2 id={`${id}-claude`} className="panel-h">{t("settings.claude")}</h2>
+      <h2 className="settings-group">{t("settings.claude")}</h2>
+      <Section title={t("settings.videoModel")} value={nameOf(s.videoModel)}>
         <ModelPicker legend={t("settings.videoModel")} help={t("settings.videoModelHelp")} value={s.videoModel} models={models} disabled={busy}
           onChange={(v) => save({ videoModel: v })} />
+      </Section>
+      <Section title={t("settings.scriptModel")} value={nameOf(s.scriptModel)}>
         <ModelPicker legend={t("settings.scriptModel")} help={t("settings.scriptModelHelp")} value={s.scriptModel} models={models} disabled={busy}
           onChange={(v) => save({ scriptModel: v })} />
+      </Section>
+      <Section title={t("settings.minutes")} value={t("settings.minutesN", { n: s.videoMinutes })}>
         <fieldset aria-describedby={`${id}-min-h`}>
-          <legend>{t("settings.minutes")}</legend>
+          <legend className="visually-hidden">{t("settings.minutes")}</legend>
           <p className="help" id={`${id}-min-h`}>{t("settings.minutesHelp")}</p>
           <div className="segmented">
             {MINUTES.map((n) => (
@@ -52,10 +68,10 @@ export function SettingsForm({ initial, models, home }: { initial: S; models: Mo
             ))}
           </div>
         </fieldset>
-      </section>
+      </Section>
 
-      <section className="panel" aria-labelledby={`${id}-voice`}>
-        <h2 id={`${id}-voice`} className="panel-h">{t("settings.voice")}</h2>
+      <h2 className="settings-group">{t("settings.voice")}</h2>
+      <Section title={t("settings.key")} value={s.hasElevenlabsKey ? t("settings.keyOn") : t("settings.keyOff")}>
         <p>{t("settings.voiceIntro")}</p>
         <div className="field">
           <label htmlFor={`${id}-key`}>{t("settings.key")}</label>
@@ -70,13 +86,13 @@ export function SettingsForm({ initial, models, home }: { initial: S; models: Mo
             <button className="link-btn danger" disabled={busy} onClick={() => void save({ elevenlabsKey: "" }, "settings.keyRemoved")}>{t("settings.removeKey")}</button>
           </>}
         </div>
-      </section>
+      </Section>
 
-      <section className="panel" aria-labelledby={`${id}-files`}>
-        <h2 id={`${id}-files`} className="panel-h">{t("settings.files")}</h2>
+      <h2 className="settings-group">{t("settings.files")}</h2>
+      <Section title={t("settings.filesWhere")} value={home}>
         <p>{t("settings.filesHelp")}</p>
         <p><code>{home}</code></p>
-      </section>
+      </Section>
 
       <p className={msg?.error ? "error-text" : "notice"} role="status" aria-live="polite" hidden={!msg}>{msg ? t(msg.text) : ""}</p>
     </>

@@ -36,7 +36,7 @@ export function ModelPicker({ legend, help, value, models, disabled, onChange }:
 
   return (
     <fieldset className="model-picker" aria-describedby={`${id}-help`}>
-      <legend>{legend}</legend>
+      <legend className="visually-hidden">{legend}</legend>
       <p className="help" id={`${id}-help`}>{help}</p>
       <div className="model-cards">{current.map(card)}</div>
       <button type="button" className="link-btn model-more" aria-expanded={showOther} onClick={() => setShowOther(!showOther)}>

@@ -403,3 +403,18 @@ a.settings-row:hover .settings-label { text-decoration: underline; }
 .model-more { margin-top: 10px; }
 .model-cards + .model-cards { margin-top: 10px; }
 .app-shell input[type="password"] { width: 100%; }
+
+/* settings: collapsible rows that show the current value when closed */
+.settings-group { font-size: 1rem; margin: 24px 0 8px; color: var(--muted); font-weight: 600; }
+.settings-group:first-child { margin-top: 0; }
+.setting { margin: 0 0 8px; padding: 0; }
+.setting > summary { list-style: none; display: flex; align-items: center; gap: 12px; padding: 16px 20px; min-height: 56px; cursor: pointer; border-radius: inherit; }
+.setting > summary::-webkit-details-marker { display: none; }
+.setting > summary::after { content: ""; flex: none; width: 9px; height: 9px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); margin-left: 4px; transition: transform .15s; }
+.setting[open] > summary::after { transform: rotate(-135deg); }
+.setting > summary:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+.setting-title { font-weight: 600; flex: 1; min-width: 0; }
+.setting-value { color: var(--muted); text-align: right; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 55%; }
+.setting-body { padding: 0 20px 20px; }
+.setting-body .model-picker { margin: 0; }
+@media (prefers-reduced-motion: reduce) { .setting > summary::after { transition: none; } }

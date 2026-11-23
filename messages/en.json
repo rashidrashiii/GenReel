@@ -246,5 +246,8 @@
   "settings.badModel": "That does not look like a Claude model ID (it should start with claude-).",
   "settings.minutesN": "{n} min",
   "settings.otherModels": "Other models (older, or a custom ID)",
-  "settings.fewerModels": "Hide other models"
+  "settings.fewerModels": "Hide other models",
+  "settings.keyOn": "Key saved: ElevenLabs voice",
+  "settings.keyOff": "Not set: free local voice",
+  "settings.filesWhere": "Saved in"
 }
