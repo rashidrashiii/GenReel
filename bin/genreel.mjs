@@ -3,13 +3,15 @@
 // Only this computer can reach it (it listens on 127.0.0.1). Stop it with Ctrl+C.
 import { spawn, spawnSync } from "node:child_process";
 import { existsSync } from "node:fs";
+import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const port = process.env.PORT || "3311";
 const url = `http://localhost:${port}`;
-const next = join(root, "node_modules", "next", "dist", "bin", "next");
+// npx and global installs put Next.js next to genreel, not inside it: let Node find it.
+const next = createRequire(import.meta.url).resolve("next/dist/bin/next");
 const env = { ...process.env, GENREEL_APP_ROOT: root, NEXT_TELEMETRY_DISABLED: "1" };
 
 if (Number(process.versions.node.split(".")[0]) < 20) {
