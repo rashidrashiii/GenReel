@@ -9,13 +9,13 @@ Describe a video in a sentence. **Your own Claude Code** writes the script, you 
 
 genreel is free and open source. Nothing runs on anyone else's server. Your Claude Code does the work, on your own Claude plan.
 
-<p align="center"><a href="https://cdn.jsdelivr.net/gh/rashidrashiii/GenReel@main/docs/media/launch.mp4"><img src="docs/media/launch.jpg" width="720" alt="genreel in 20 seconds: play the launch video"></a><br>
+<p align="center"><a href="https://cdn.jsdelivr.net/gh/rashidrashiii/GenReel@main/docs/media/launch.mp4"><img src="docs/media/launch-play.jpg" width="720" alt="genreel in 20 seconds: play the launch video"></a><br>
 <sub>Click to play the 20-second tour.</sub></p>
 
 ## Made with genreel
 Each of these was one sentence typed into genreel. Claude Code (Opus 5.5) wrote the script, chose a [lemo-opuscar](#optional-lemo-opuscar) film style and made the video in about 10 minutes, with the free local voice.
 
-| [<img src="docs/media/honeybee.jpg" width="200" alt="How a honeybee makes honey">](https://cdn.jsdelivr.net/gh/rashidrashiii/GenReel@main/docs/media/honeybee.mp4) | [<img src="docs/media/sleep.jpg" width="200" alt="Three tips to sleep better tonight">](https://cdn.jsdelivr.net/gh/rashidrashiii/GenReel@main/docs/media/sleep.mp4) | [<img src="docs/media/sky.jpg" width="200" alt="Why is the sky blue?">](https://cdn.jsdelivr.net/gh/rashidrashiii/GenReel@main/docs/media/sky.mp4) |
+| [<img src="docs/media/honeybee-play.jpg" width="200" alt="How a honeybee makes honey">](https://cdn.jsdelivr.net/gh/rashidrashiii/GenReel@main/docs/media/honeybee.mp4) | [<img src="docs/media/sleep-play.jpg" width="200" alt="Three tips to sleep better tonight">](https://cdn.jsdelivr.net/gh/rashidrashiii/GenReel@main/docs/media/sleep.mp4) | [<img src="docs/media/sky-play.jpg" width="200" alt="Why is the sky blue?">](https://cdn.jsdelivr.net/gh/rashidrashiii/GenReel@main/docs/media/sky.mp4) |
 |:-:|:-:|:-:|
 | **How a honeybee makes honey**<br>Mid-century cartoon, 25 s | **Three tips to sleep better tonight**<br>Crayon picture book, 28 s | **Why is the sky blue?**<br>Coloured-pencil science, 27 s |
 
