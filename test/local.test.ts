@@ -76,3 +76,13 @@ test("settings: key stays private, file is owner-only, languages follow the key"
   assert.equal(statSync(join(process.env.GENREEL_HOME!, "settings.json")).mode & 0o777, 0o600);
   assert.match(readFileSync(join(process.env.GENREEL_HOME!, "settings.json"), "utf8"), /sk_test/);
 });
+
+test("restart: a job that was running when genreel stopped is marked failed with Try again", async () => {
+  const { recover } = await import("../lib/jobs.ts");
+  const p = await createProject({ prompt: "r", language: "en", aspect: "9:16", target_seconds: 15, brand });
+  await updateProject(p.id, (q) => { q.state = "render_pending"; q.job = { ...newJob("render"), status: "running", pid: 999_999 }; });
+  await recover();
+  const after = (await getProject(p.id))!;
+  assert.equal(after.state, "failed");
+  assert.equal(after.job!.error, "errors.interrupted");
+});
