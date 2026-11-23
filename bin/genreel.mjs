@@ -12,7 +12,10 @@ const port = process.env.PORT || "3311";
 const url = `http://localhost:${port}`;
 // npx and global installs put Next.js next to genreel, not inside it: let Node find it.
 const next = createRequire(import.meta.url).resolve("next/dist/bin/next");
-const env = { ...process.env, GENREEL_APP_ROOT: root, NEXT_TELEMETRY_DISABLED: "1" };
+// Drop npm's npm_* variables (npx sets npm_config_local_prefix to the folder it ran from), so npm and
+// remotion started by genreel install and look in their own folders.
+const env = Object.fromEntries(Object.entries(process.env).filter(([k]) => !/^npm_/i.test(k)));
+Object.assign(env, { GENREEL_APP_ROOT: root, NEXT_TELEMETRY_DISABLED: "1" });
 
 if (Number(process.versions.node.split(".")[0]) < 20) {
   console.error(`genreel needs Node.js 20 or newer (this is ${process.versions.node}).`);

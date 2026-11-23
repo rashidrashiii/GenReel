@@ -93,7 +93,8 @@ const STEPS: Record<string, (t: Task) => Promise<void>> = {
     await mkdir(paths.renderer, { recursive: true });
     await cp(paths.rendererSrc, paths.renderer, { recursive: true, force: true, filter: (src) => !/[/\\](node_modules|out)([/\\]|$)/.test(src) });
     await sh(t, "npm", ["ci", "--no-audit", "--no-fund"], paths.renderer);
-    await sh(t, "npx", ["remotion", "browser", "ensure"], paths.renderer);
+    // The renderer's own CLI, not npx: npx can resolve packages from somewhere else.
+    await sh(t, process.execPath, [join(paths.renderer, "node_modules/@remotion/cli/remotion-cli.js"), "browser", "ensure"], paths.renderer);
     await writeFile(rendererVersionFile, await appVersion());
   },
   /** A private Python environment with Kokoro, and its two model files (about 340 MB). */
