@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/genreel/genreel/video-script.schema.json",
+  "$id": "https://github.com/rashidrashiii/GenReel/video-script.schema.json",
   "title": "VideoScript",
   "description": "A short animated explainer as a list of beats (docs/VISUAL_UPGRADE.md, docs/SCENES.md). Each beat is 1-3 s; joined narrations are the voiceover.",
   "type": "object",

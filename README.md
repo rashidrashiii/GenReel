@@ -1,4 +1,9 @@
-# genreel
+<p align="center"><img src="public/logo.svg" width="96" height="96" alt="genreel logo"></p>
+
+<h1 align="center">genreel</h1>
+
+<p align="center">Describe it. Your own Claude Code makes the video.<br>
+Made by <a href="https://github.com/rashidrashiii">@rashidrashiii</a> · <a href="https://github.com/rashidrashiii/GenReel">github.com/rashidrashiii/GenReel</a></p>
 
 Describe a video in a sentence. **Your own Claude Code** writes the script, you check it shot by shot, and it makes a narrated, captioned, animated video on your computer, ready for Reels, Shorts or a status update.
 
@@ -18,7 +23,7 @@ genreel checks these on its Setup page and installs everything else itself:
 ```bash
 npx genreel
 ```
-Or from a clone: `npm install && npm start`. It opens http://localhost:3311.
+Or from a clone: `git clone https://github.com/rashidrashiii/GenReel && cd GenReel && npm install && npm start`. It opens http://localhost:3311.
 
 ## How it works
 1. **Describe:** your idea, the language, the length (15 to 90 s) and the shape (tall, square, wide).
@@ -67,6 +72,9 @@ Delete the folder to remove everything.
 
 ## Licences
 genreel's code is MIT. See [THIRD_PARTY.md](THIRD_PARTY.md) for Remotion (free for individuals and small companies; larger companies need a Remotion company licence), Kokoro, fonts and the included music and sound effects.
+
+## Contributing and feedback
+Issues and pull requests are welcome at [github.com/rashidrashiii/GenReel](https://github.com/rashidrashiii/GenReel/issues). If genreel is useful to you, a star helps others find it.
 
 ## Develop
 `npm run dev`, `npm run check` (types, lint, tests). See [CONTRIBUTING.md](CONTRIBUTING.md).

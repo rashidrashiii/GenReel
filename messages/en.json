@@ -249,5 +249,16 @@
   "settings.fewerModels": "Hide other models",
   "settings.keyOn": "Key saved: ElevenLabs voice",
   "settings.keyOff": "Not set: free local voice",
-  "settings.filesWhere": "Saved in"
+  "settings.filesWhere": "Saved in",
+  "footer.free": "genreel is free and open source.",
+  "footer.madeBy": "Made by",
+  "footer.label": "About genreel",
+  "footer.source": "Source on GitHub",
+  "footer.issue": "Report a problem",
+  "settings.about": "About",
+  "settings.aboutTitle": "genreel",
+  "settings.version": "Version {v}",
+  "settings.aboutBody": "Free and open source (MIT licence). Made by",
+  "settings.star": "Star it or contribute on GitHub",
+  "settings.report": "Report a problem or ask for a feature"
 }

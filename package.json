@@ -56,5 +56,23 @@
     "README.md",
     "LICENSE",
     "THIRD_PARTY.md"
+  ],
+  "author": "rashidrashiii (https://github.com/rashidrashiii)",
+  "homepage": "https://github.com/rashidrashiii/GenReel#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rashidrashiii/GenReel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rashidrashiii/GenReel/issues"
+  },
+  "keywords": [
+    "video",
+    "claude-code",
+    "remotion",
+    "shorts",
+    "reels",
+    "text-to-video",
+    "open-source"
   ]
 }

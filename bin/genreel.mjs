@@ -29,7 +29,8 @@ server.stdout.on("data", (d) => {
   process.stdout.write(d);
   if (!opened && /ready|started|Local:/i.test(String(d))) {
     opened = true;
-    console.log(`\ngenreel is running at ${url}  (Ctrl+C to stop)\n`);
+    console.log(`\ngenreel is running at ${url}  (Ctrl+C to stop)`);
+    console.log("Free and open source, made by @rashidrashiii: https://github.com/rashidrashiii/GenReel\n");
     if (!process.env.GENREEL_NO_OPEN) {
       const cmd = process.platform === "darwin" ? "open" : process.platform === "win32" ? "cmd" : "xdg-open";
       const args = process.platform === "win32" ? ["/c", "start", "", url] : [url];

@@ -3,6 +3,7 @@ import { Archivo, Noto_Sans_Malayalam, Source_Sans_3 } from "next/font/google";
 import { getI18n } from "@/lib/i18n-server";
 import { I18nProvider } from "@/components/i18n";
 import { AppHeader } from "@/components/headers";
+import { Footer } from "@/components/footer";
 import "./globals.css";
 import "./app.css";
 
@@ -13,6 +14,7 @@ const malayalam = Noto_Sans_Malayalam({ subsets: ["malayalam"], weight: ["400", 
 export const metadata: Metadata = {
   title: { default: "genreel", template: "%s | genreel" },
   description: "Describe a video, check the script, and your own Claude Code makes a narrated, captioned animated video on your computer.",
+  authors: [{ name: "rashidrashiii", url: "https://github.com/rashidrashiii" }],
 };
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#0E1A14" };
 
@@ -26,6 +28,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <div className="app-shell">
             <AppHeader />
             <main className="app-main" id="main" tabIndex={-1}>{children}</main>
+            <Footer />
           </div>
         </I18nProvider>
       </body>

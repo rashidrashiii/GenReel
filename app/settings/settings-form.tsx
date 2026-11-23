@@ -2,6 +2,8 @@
 import { useId, useState } from "react";
 import { useT } from "@/components/i18n";
 import { ModelPicker, type Model } from "./model-picker";
+import { Logo } from "@/components/logo";
+import { ABOUT } from "@/lib/about";
 
 type S = { scriptModel: string; videoModel: string; language: string; videoMinutes: number; hasElevenlabsKey: boolean };
 
@@ -17,7 +19,7 @@ function Section({ title, value, children }: { title: string; value: string; chi
   );
 }
 
-export function SettingsForm({ initial, models, home }: { initial: S; models: Model[]; home: string }) {
+export function SettingsForm({ initial, models, home, version }: { initial: S; models: Model[]; home: string; version: string }) {
   const { t } = useT();
   const id = useId();
   const [s, setS] = useState(initial);
@@ -92,6 +94,20 @@ export function SettingsForm({ initial, models, home }: { initial: S; models: Mo
       <Section title={t("settings.filesWhere")} value={home}>
         <p>{t("settings.filesHelp")}</p>
         <p><code>{home}</code></p>
+      </Section>
+
+      <h2 className="settings-group">{t("settings.about")}</h2>
+      <Section title={t("settings.aboutTitle")} value={t("settings.version", { v: version })}>
+        <div className="about-row">
+          <Logo size={56} />
+          <p style={{ margin: 0 }}>
+            {t("settings.aboutBody")} <a href={ABOUT.authorUrl} target="_blank" rel="noreferrer">@{ABOUT.author}</a>.
+          </p>
+        </div>
+        <ul className="about-links">
+          <li><a href={ABOUT.repo} target="_blank" rel="noreferrer">{t("settings.star")}</a></li>
+          <li><a href={ABOUT.issues} target="_blank" rel="noreferrer">{t("settings.report")}</a></li>
+        </ul>
       </Section>
 
       <p className={msg?.error ? "error-text" : "notice"} role="status" aria-live="polite" hidden={!msg}>{msg ? t(msg.text) : ""}</p>
