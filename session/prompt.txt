@@ -1,0 +1,3 @@
+Make the video described in input/brief.json, following the CLAUDE.md in this folder.
+Write out/video.mp4. Update out/stage.txt and out/progress.txt as you go.
+If you cannot finish, write the reason to out/error.txt and stop.

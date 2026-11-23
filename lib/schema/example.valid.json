@@ -1,0 +1,132 @@
+{
+ "title": "Saturday offer at Sree Bakery",
+ "language": "en",
+ "voice": "warm_female",
+ "music": "upbeat",
+ "background": "shop",
+ "beats": [
+  {
+   "narration": "Twenty percent off this Saturday!",
+   "emphasis": [
+    0,
+    1
+   ],
+   "layout": "stack",
+   "presenter": {
+    "pose": "surprised"
+   },
+   "props": [
+    {
+     "tag": "price_tag",
+     "enter": "drop",
+     "idle": "wobble"
+    }
+   ],
+   "camera": "shake_punch",
+   "transition": "cut",
+   "sfx": "thud"
+  },
+  {
+   "narration": "Fresh bread, straight from the oven,",
+   "emphasis": [
+    1
+   ],
+   "layout": "hero",
+   "props": [
+    {
+     "tag": "bread",
+     "enter": "pop",
+     "idle": "float"
+    }
+   ],
+   "camera": "push_in",
+   "transition": "whip"
+  },
+  {
+   "narration": "cakes, pastries and all your tea snacks.",
+   "emphasis": [
+    0
+   ],
+   "layout": "row",
+   "presenter": {
+    "pose": "explain"
+   },
+   "props": [
+    {
+     "tag": "cake",
+     "enter": "pop"
+    },
+    {
+     "tag": "coffee_cup",
+     "enter": "pop"
+    }
+   ],
+   "camera": "pan_left",
+   "transition": "zoom",
+   "sfx": "pop"
+  },
+  {
+   "narration": "Everything in the shop is cheaper.",
+   "emphasis": [
+    5
+   ],
+   "layout": "number",
+   "presenter": {
+    "pose": "point",
+    "side": "right"
+   },
+   "number": {
+    "value": "20%",
+    "label": "off everything"
+   },
+   "camera": "shake_punch",
+   "transition": "whip",
+   "sfx": "ding"
+  },
+  {
+   "narration": "Only this Saturday, from morning till night.",
+   "emphasis": [
+    1
+   ],
+   "layout": "stack",
+   "presenter": {
+    "pose": "explain",
+    "side": "left"
+   },
+   "props": [
+    {
+     "tag": "calendar",
+     "enter": "slide_up"
+    },
+    {
+     "tag": "clock",
+     "enter": "pop",
+     "idle": "wobble"
+    }
+   ],
+   "camera": "push_in",
+   "transition": "iris"
+  },
+  {
+   "narration": "Visit Sree Bakery this Saturday.",
+   "emphasis": [
+    1,
+    2
+   ],
+   "layout": "stack",
+   "presenter": {
+    "pose": "thumbs_up"
+   },
+   "props": [
+    {
+     "tag": "shop_front",
+     "enter": "slide_up",
+     "idle": "none"
+    }
+   ],
+   "camera": "pull_out",
+   "transition": "whip",
+   "sfx": "whoosh"
+  }
+ ]
+}

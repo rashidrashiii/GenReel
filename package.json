@@ -1,0 +1,33 @@
+{
+  "name": "genreel",
+  "version": "0.1.0",
+  "description": "Describe a video, check the script, and your own Claude Code makes a narrated, captioned animated video on your computer.",
+  "license": "MIT",
+  "type": "module",
+  "bin": { "genreel": "bin/genreel.mjs" },
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev": "next dev -p 3311",
+    "build": "next build",
+    "start": "node bin/genreel.mjs",
+    "lint": "eslint",
+    "test": "node --import tsx --test test/*.test.ts",
+    "check": "tsc --noEmit && eslint && npm test"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "next": "16.4.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "server-only": "0.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.6",
+    "tsx": "^4.20.0",
+    "typescript": "5.9.3"
+  }
+}

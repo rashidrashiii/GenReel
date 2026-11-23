@@ -1,0 +1,987 @@
+[
+ {
+  "tag": "checkmark",
+  "category": "symbols",
+  "keywords": [
+   "yes",
+   "done",
+   "correct",
+   "right",
+   "tick",
+   "approved",
+   "ok",
+   "success"
+  ]
+ },
+ {
+  "tag": "cross",
+  "category": "symbols",
+  "keywords": [
+   "no",
+   "wrong",
+   "stop",
+   "avoid",
+   "mistake",
+   "not",
+   "never",
+   "x"
+  ]
+ },
+ {
+  "tag": "star",
+  "category": "symbols",
+  "keywords": [
+   "best",
+   "favourite",
+   "favorite",
+   "rating",
+   "review",
+   "quality",
+   "special",
+   "top"
+  ]
+ },
+ {
+  "tag": "heart",
+  "category": "symbols",
+  "keywords": [
+   "love",
+   "care",
+   "health",
+   "like",
+   "wish",
+   "family",
+   "romance",
+   "kind"
+  ]
+ },
+ {
+  "tag": "lightbulb",
+  "category": "symbols",
+  "keywords": [
+   "idea",
+   "tip",
+   "think",
+   "smart",
+   "learn",
+   "solution",
+   "electricity",
+   "bright"
+  ]
+ },
+ {
+  "tag": "clock",
+  "category": "time",
+  "keywords": [
+   "time",
+   "hour",
+   "minute",
+   "fast",
+   "quick",
+   "late",
+   "open",
+   "timing",
+   "schedule"
+  ]
+ },
+ {
+  "tag": "calendar",
+  "category": "time",
+  "keywords": [
+   "date",
+   "day",
+   "week",
+   "month",
+   "event",
+   "booking",
+   "appointment",
+   "festival",
+   "deadline"
+  ]
+ },
+ {
+  "tag": "megaphone",
+  "category": "marketing",
+  "keywords": [
+   "announce",
+   "announcement",
+   "news",
+   "launch",
+   "shout",
+   "promote",
+   "attention",
+   "notice"
+  ]
+ },
+ {
+  "tag": "gift",
+  "category": "shopping",
+  "keywords": [
+   "present",
+   "offer",
+   "free",
+   "bonus",
+   "surprise",
+   "birthday",
+   "festival",
+   "reward"
+  ]
+ },
+ {
+  "tag": "shopping_cart",
+  "category": "shopping",
+  "keywords": [
+   "buy",
+   "cart",
+   "shop",
+   "shopping",
+   "order",
+   "purchase",
+   "grocery",
+   "supermarket"
+  ]
+ },
+ {
+  "tag": "shopping_bag",
+  "category": "shopping",
+  "keywords": [
+   "bag",
+   "shopping",
+   "fashion",
+   "clothes",
+   "store",
+   "purchase",
+   "sale"
+  ]
+ },
+ {
+  "tag": "price_tag",
+  "category": "money",
+  "keywords": [
+   "price",
+   "cost",
+   "discount",
+   "offer",
+   "sale",
+   "cheap",
+   "deal",
+   "tag"
+  ]
+ },
+ {
+  "tag": "rupee_coin",
+  "category": "money",
+  "keywords": [
+   "rupee",
+   "money",
+   "coin",
+   "pay",
+   "save",
+   "savings",
+   "rs",
+   "inr",
+   "cash"
+  ]
+ },
+ {
+  "tag": "money_stack",
+  "category": "money",
+  "keywords": [
+   "money",
+   "cash",
+   "profit",
+   "earn",
+   "income",
+   "salary",
+   "notes",
+   "rich"
+  ]
+ },
+ {
+  "tag": "phone",
+  "category": "tech",
+  "keywords": [
+   "phone",
+   "mobile",
+   "call",
+   "app",
+   "whatsapp",
+   "contact",
+   "smartphone",
+   "online"
+  ]
+ },
+ {
+  "tag": "laptop",
+  "category": "tech",
+  "keywords": [
+   "computer",
+   "laptop",
+   "online",
+   "website",
+   "work",
+   "code",
+   "internet",
+   "office",
+   "digital"
+  ]
+ },
+ {
+  "tag": "envelope",
+  "category": "communication",
+  "keywords": [
+   "mail",
+   "email",
+   "letter",
+   "message",
+   "invite",
+   "invitation",
+   "send",
+   "inbox"
+  ]
+ },
+ {
+  "tag": "chat_bubble",
+  "category": "communication",
+  "keywords": [
+   "chat",
+   "talk",
+   "message",
+   "say",
+   "comment",
+   "whatsapp",
+   "conversation",
+   "ask",
+   "question"
+  ]
+ },
+ {
+  "tag": "thumbs_up",
+  "category": "symbols",
+  "keywords": [
+   "good",
+   "like",
+   "great",
+   "approve",
+   "agree",
+   "nice",
+   "awesome",
+   "recommend"
+  ]
+ },
+ {
+  "tag": "trophy",
+  "category": "success",
+  "keywords": [
+   "win",
+   "winner",
+   "award",
+   "prize",
+   "champion",
+   "first",
+   "best",
+   "achievement",
+   "success"
+  ]
+ },
+ {
+  "tag": "rocket",
+  "category": "success",
+  "keywords": [
+   "launch",
+   "fast",
+   "grow",
+   "growth",
+   "start",
+   "startup",
+   "boost",
+   "speed",
+   "new"
+  ]
+ },
+ {
+  "tag": "magnifier",
+  "category": "tech",
+  "keywords": [
+   "search",
+   "find",
+   "look",
+   "check",
+   "detail",
+   "inspect",
+   "research",
+   "zoom"
+  ]
+ },
+ {
+  "tag": "gear",
+  "category": "tech",
+  "keywords": [
+   "setting",
+   "settings",
+   "work",
+   "process",
+   "service",
+   "repair",
+   "machine",
+   "engineering",
+   "how"
+  ]
+ },
+ {
+  "tag": "location_pin",
+  "category": "places",
+  "keywords": [
+   "place",
+   "where",
+   "address",
+   "map",
+   "near",
+   "location",
+   "visit",
+   "here",
+   "city"
+  ]
+ },
+ {
+  "tag": "house",
+  "category": "places",
+  "keywords": [
+   "home",
+   "house",
+   "family",
+   "rent",
+   "property",
+   "real",
+   "estate",
+   "living",
+   "stay"
+  ]
+ },
+ {
+  "tag": "shop_front",
+  "category": "places",
+  "keywords": [
+   "shop",
+   "store",
+   "business",
+   "opening",
+   "outlet",
+   "showroom",
+   "branch",
+   "market"
+  ]
+ },
+ {
+  "tag": "tree",
+  "category": "nature",
+  "keywords": [
+   "tree",
+   "nature",
+   "green",
+   "environment",
+   "plant",
+   "garden",
+   "forest",
+   "eco",
+   "park"
+  ]
+ },
+ {
+  "tag": "sun",
+  "category": "nature",
+  "keywords": [
+   "sun",
+   "sunny",
+   "summer",
+   "morning",
+   "day",
+   "solar",
+   "hot",
+   "bright",
+   "weather"
+  ]
+ },
+ {
+  "tag": "cloud",
+  "category": "nature",
+  "keywords": [
+   "cloud",
+   "weather",
+   "rain",
+   "monsoon",
+   "sky",
+   "online",
+   "storage"
+  ]
+ },
+ {
+  "tag": "water_drop",
+  "category": "nature",
+  "keywords": [
+   "water",
+   "drink",
+   "drop",
+   "rain",
+   "clean",
+   "pure",
+   "liquid",
+   "hydrate"
+  ]
+ },
+ {
+  "tag": "train",
+  "category": "transport",
+  "keywords": [
+   "train",
+   "metro",
+   "rail",
+   "railway",
+   "travel",
+   "commute",
+   "station",
+   "transport"
+  ]
+ },
+ {
+  "tag": "bar_chart",
+  "category": "data",
+  "keywords": [
+   "growth",
+   "chart",
+   "data",
+   "sales",
+   "increase",
+   "result",
+   "stats",
+   "numbers",
+   "report",
+   "graph"
+  ]
+ },
+ {
+  "tag": "bus",
+  "category": "transport",
+  "keywords": [
+   "bus",
+   "travel",
+   "trip",
+   "commute",
+   "ride",
+   "route",
+   "school"
+  ]
+ },
+ {
+  "tag": "auto_rickshaw",
+  "category": "transport",
+  "keywords": [
+   "auto",
+   "rickshaw",
+   "autorickshaw",
+   "taxi",
+   "ride",
+   "local",
+   "drop"
+  ]
+ },
+ {
+  "tag": "car",
+  "category": "transport",
+  "keywords": [
+   "car",
+   "drive",
+   "vehicle",
+   "taxi",
+   "parking",
+   "road",
+   "travel"
+  ]
+ },
+ {
+  "tag": "boat",
+  "category": "transport",
+  "keywords": [
+   "boat",
+   "ship",
+   "houseboat",
+   "backwater",
+   "sea",
+   "river",
+   "ferry",
+   "kerala"
+  ]
+ },
+ {
+  "tag": "plane",
+  "category": "transport",
+  "keywords": [
+   "plane",
+   "flight",
+   "fly",
+   "airport",
+   "travel",
+   "abroad",
+   "trip",
+   "tour"
+  ]
+ },
+ {
+  "tag": "truck",
+  "category": "transport",
+  "keywords": [
+   "truck",
+   "delivery",
+   "deliver",
+   "shipping",
+   "lorry",
+   "transport",
+   "courier",
+   "goods"
+  ]
+ },
+ {
+  "tag": "bicycle",
+  "category": "transport",
+  "keywords": [
+   "bicycle",
+   "cycle",
+   "bike",
+   "ride",
+   "fitness",
+   "exercise",
+   "green"
+  ]
+ },
+ {
+  "tag": "solar_panel",
+  "category": "nature",
+  "keywords": [
+   "solar",
+   "energy",
+   "power",
+   "electricity",
+   "panel",
+   "renewable",
+   "green"
+  ]
+ },
+ {
+  "tag": "leaf",
+  "category": "nature",
+  "keywords": [
+   "leaf",
+   "green",
+   "eco",
+   "natural",
+   "organic",
+   "herbal",
+   "fresh",
+   "plant"
+  ]
+ },
+ {
+  "tag": "flower",
+  "category": "nature",
+  "keywords": [
+   "flower",
+   "bloom",
+   "garden",
+   "beauty",
+   "onam",
+   "pookalam",
+   "gift",
+   "spring"
+  ]
+ },
+ {
+  "tag": "coconut_tree",
+  "category": "nature",
+  "keywords": [
+   "coconut",
+   "palm",
+   "kerala",
+   "beach",
+   "tropical",
+   "village",
+   "tree"
+  ]
+ },
+ {
+  "tag": "oil_lamp",
+  "category": "festival",
+  "keywords": [
+   "lamp",
+   "diya",
+   "nilavilakku",
+   "festival",
+   "diwali",
+   "prayer",
+   "temple",
+   "light",
+   "onam",
+   "vishu"
+  ]
+ },
+ {
+  "tag": "bread",
+  "category": "food",
+  "keywords": [
+   "bread",
+   "bakery",
+   "loaf",
+   "baked",
+   "breakfast",
+   "toast",
+   "fresh"
+  ]
+ },
+ {
+  "tag": "cake",
+  "category": "food",
+  "keywords": [
+   "cake",
+   "birthday",
+   "bakery",
+   "dessert",
+   "celebration",
+   "sweet",
+   "party",
+   "anniversary"
+  ]
+ },
+ {
+  "tag": "coffee_cup",
+  "category": "food",
+  "keywords": [
+   "coffee",
+   "tea",
+   "chai",
+   "cup",
+   "drink",
+   "cafe",
+   "snack",
+   "morning"
+  ]
+ },
+ {
+  "tag": "plate_food",
+  "category": "food",
+  "keywords": [
+   "food",
+   "meal",
+   "lunch",
+   "dinner",
+   "restaurant",
+   "biryani",
+   "sadya",
+   "eat",
+   "dish",
+   "menu"
+  ]
+ },
+ {
+  "tag": "chef_hat",
+  "category": "food",
+  "keywords": [
+   "chef",
+   "cook",
+   "cooking",
+   "kitchen",
+   "restaurant",
+   "recipe",
+   "catering"
+  ]
+ },
+ {
+  "tag": "tooth",
+  "category": "health",
+  "keywords": [
+   "tooth",
+   "teeth",
+   "dental",
+   "dentist",
+   "smile",
+   "clinic",
+   "brush"
+  ]
+ },
+ {
+  "tag": "stethoscope",
+  "category": "health",
+  "keywords": [
+   "doctor",
+   "health",
+   "clinic",
+   "hospital",
+   "checkup",
+   "medical",
+   "care"
+  ]
+ },
+ {
+  "tag": "pill",
+  "category": "health",
+  "keywords": [
+   "medicine",
+   "pill",
+   "tablet",
+   "pharmacy",
+   "health",
+   "dose",
+   "cure"
+  ]
+ },
+ {
+  "tag": "book",
+  "category": "learning",
+  "keywords": [
+   "book",
+   "read",
+   "study",
+   "learn",
+   "school",
+   "story",
+   "knowledge",
+   "library"
+  ]
+ },
+ {
+  "tag": "graduation_cap",
+  "category": "learning",
+  "keywords": [
+   "graduation",
+   "degree",
+   "college",
+   "exam",
+   "admission",
+   "student",
+   "course",
+   "class"
+  ]
+ },
+ {
+  "tag": "pencil",
+  "category": "learning",
+  "keywords": [
+   "pencil",
+   "write",
+   "draw",
+   "notes",
+   "homework",
+   "sign",
+   "edit",
+   "art"
+  ]
+ },
+ {
+  "tag": "dumbbell",
+  "category": "health",
+  "keywords": [
+   "gym",
+   "fitness",
+   "exercise",
+   "workout",
+   "strong",
+   "weight",
+   "training",
+   "sport"
+  ]
+ },
+ {
+  "tag": "gold_ring",
+  "category": "jewellery",
+  "keywords": [
+   "ring",
+   "gold",
+   "jewellery",
+   "jewelry",
+   "wedding",
+   "engagement",
+   "diamond",
+   "marriage"
+  ]
+ },
+ {
+  "tag": "necklace",
+  "category": "jewellery",
+  "keywords": [
+   "necklace",
+   "gold",
+   "jewellery",
+   "jewelry",
+   "chain",
+   "wedding",
+   "ornament"
+  ]
+ },
+ {
+  "tag": "key",
+  "category": "security",
+  "keywords": [
+   "key",
+   "home",
+   "house",
+   "new",
+   "unlock",
+   "access",
+   "rent",
+   "car"
+  ]
+ },
+ {
+  "tag": "lock",
+  "category": "security",
+  "keywords": [
+   "lock",
+   "safe",
+   "secure",
+   "security",
+   "privacy",
+   "protect",
+   "password"
+  ]
+ },
+ {
+  "tag": "shield",
+  "category": "security",
+  "keywords": [
+   "shield",
+   "safe",
+   "protection",
+   "insurance",
+   "trust",
+   "guarantee",
+   "warranty",
+   "secure"
+  ]
+ },
+ {
+  "tag": "people_group",
+  "category": "people",
+  "keywords": [
+   "people",
+   "team",
+   "family",
+   "friends",
+   "group",
+   "community",
+   "customers",
+   "everyone"
+  ]
+ },
+ {
+  "tag": "person",
+  "category": "people",
+  "keywords": [
+   "person",
+   "customer",
+   "user",
+   "man",
+   "woman",
+   "you",
+   "member",
+   "profile"
+  ]
+ },
+ {
+  "tag": "percent_badge",
+  "category": "money",
+  "keywords": [
+   "percent",
+   "discount",
+   "offer",
+   "sale",
+   "off",
+   "deal",
+   "save"
+  ]
+ },
+ {
+  "tag": "sale_burst",
+  "category": "money",
+  "keywords": [
+   "sale",
+   "offer",
+   "deal",
+   "clearance",
+   "festival",
+   "mega",
+   "special",
+   "limited"
+  ]
+ },
+ {
+  "tag": "pie_chart",
+  "category": "data",
+  "keywords": [
+   "share",
+   "percent",
+   "survey",
+   "chart",
+   "data",
+   "part",
+   "split",
+   "budget"
+  ]
+ },
+ {
+  "tag": "wallet",
+  "category": "money",
+  "keywords": [
+   "wallet",
+   "money",
+   "pay",
+   "cash",
+   "purse",
+   "spend",
+   "save",
+   "budget"
+  ]
+ },
+ {
+  "tag": "credit_card",
+  "category": "money",
+  "keywords": [
+   "card",
+   "credit",
+   "debit",
+   "payment",
+   "pay",
+   "upi",
+   "online",
+   "emi"
+  ]
+ },
+ {
+  "tag": "saree",
+  "category": "clothing",
+  "keywords": [
+   "saree",
+   "sari",
+   "kasavu",
+   "silk",
+   "textile",
+   "textiles",
+   "clothes",
+   "dress",
+   "fashion",
+   "onam"
+  ]
+ },
+ {
+  "tag": "shirt",
+  "category": "clothing",
+  "keywords": [
+   "shirt",
+   "clothes",
+   "clothing",
+   "dress",
+   "fashion",
+   "uniform",
+   "mundu",
+   "wear",
+   "garment"
+  ]
+ }
+]

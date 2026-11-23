@@ -1,0 +1,145 @@
+{
+ "title": "Kochi Metro secrets",
+ "language": "en",
+ "voice": "energetic_female",
+ "music": "upbeat",
+ "background": "city",
+ "beats": [
+  {
+   "narration": "Kochi Metro has a few surprising secrets.",
+   "emphasis": [
+    5
+   ],
+   "layout": "stack",
+   "presenter": {
+    "pose": "surprised"
+   },
+   "props": [
+    {
+     "tag": "train",
+     "enter": "slide_up"
+    }
+   ],
+   "camera": "push_in",
+   "transition": "cut",
+   "sfx": "thud"
+  },
+  {
+   "narration": "One: it runs on solar power.",
+   "emphasis": [
+    4
+   ],
+   "layout": "stack",
+   "presenter": {
+    "pose": "point",
+    "side": "right"
+   },
+   "props": [
+    {
+     "tag": "solar_panel",
+     "enter": "pop"
+    },
+    {
+     "tag": "sun",
+     "enter": "drop",
+     "idle": "pulse"
+    }
+   ],
+   "camera": "pan_left",
+   "transition": "whip",
+   "sfx": "whoosh"
+  },
+  {
+   "narration": "Two: stations have vertical gardens.",
+   "emphasis": [
+    3
+   ],
+   "layout": "row",
+   "props": [
+    {
+     "tag": "tree",
+     "enter": "pop"
+    },
+    {
+     "tag": "leaf",
+     "enter": "pop"
+    }
+   ],
+   "camera": "push_in",
+   "transition": "zoom",
+   "sfx": "pop",
+   "background": "nature"
+  },
+  {
+   "narration": "Three: a ride costs less than a taxi.",
+   "emphasis": [
+    5
+   ],
+   "layout": "number",
+   "presenter": {
+    "pose": "explain"
+   },
+   "number": {
+    "value": "20%",
+    "label": "cheaper than a taxi"
+   },
+   "camera": "shake_punch",
+   "transition": "cut",
+   "sfx": "ding"
+  },
+  {
+   "narration": "Buy a ticket, tap in, and ride.",
+   "layout": "diagram",
+   "diagram": {
+    "kind": "row",
+    "nodes": [
+     {
+      "label": "Ticket",
+      "tag": "price_tag"
+     },
+     {
+      "label": "Tap in",
+      "tag": "phone"
+     },
+     {
+      "label": "Ride",
+      "tag": "train"
+     }
+    ]
+   },
+   "camera": "push_in",
+   "transition": "whip"
+  },
+  {
+   "narration": "The view from the top is amazing.",
+   "emphasis": [
+    5
+   ],
+   "layout": "hero",
+   "props": [
+    {
+     "tag": "location_pin",
+     "enter": "drop",
+     "idle": "float"
+    }
+   ],
+   "camera": "pull_out",
+   "transition": "iris",
+   "sfx": "whoosh",
+   "background": "night"
+  },
+  {
+   "narration": "Try it this weekend and tell us!",
+   "emphasis": [
+    1
+   ],
+   "layout": "presenter_big",
+   "presenter": {
+    "pose": "thumbs_up"
+   },
+   "camera": "push_in",
+   "transition": "zoom",
+   "sfx": "pop"
+  }
+ ]
+}

@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+.env
+.env.*
+.DS_Store
+renderer/node_modules/
+renderer/out/
+.fake-env.json
