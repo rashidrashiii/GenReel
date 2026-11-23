@@ -9,4 +9,4 @@ coverage/
 renderer/node_modules/
 renderer/out/
 .fake-env.json
-brag-output/
+brag-output*/
