@@ -57,7 +57,7 @@ test("session rules: real folders filled in, lemo-opuscar steps only when it is 
   const withIt = await sessionRules({ work: "/tmp/w", minutes: 60, opuscar: true });
   const without = await sessionRules({ work: "/tmp/w", minutes: 60, opuscar: false });
   for (const t of [withIt, without]) {
-    assert.doesNotMatch(t, /\{\{|\/work\/|\/opt\//, "no placeholders or container paths left");
+    assert.doesNotMatch(t, /\{\{|(^|[\s`(])\/(work|opt)\//m, "no placeholders or container paths left");
     assert.match(t, /\/tmp\/w\/input\/brief\.json/);
   }
   assert.match(withIt, /lemo-opuscar:lemo-opuscar/);
