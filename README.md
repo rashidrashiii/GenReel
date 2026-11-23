@@ -9,6 +9,18 @@ Describe a video in a sentence. **Your own Claude Code** writes the script, you 
 
 genreel is free and open source. Nothing runs on anyone else's server. Your Claude Code does the work, on your own Claude plan.
 
+<p align="center"><a href="docs/media/launch.mp4"><img src="docs/media/launch.jpg" width="720" alt="genreel in 20 seconds: play the launch video"></a><br>
+<sub>Click to play the 20-second tour.</sub></p>
+
+## Made with genreel
+Each of these was one sentence typed into genreel. Claude Code (Opus 5.5) wrote the script, chose a [lemo-opuscar](#optional-lemo-opuscar) film style and made the video in about 10 minutes, with the free local voice.
+
+| [<img src="docs/media/honeybee.jpg" width="200" alt="How a honeybee makes honey">](docs/media/honeybee.mp4) | [<img src="docs/media/sleep.jpg" width="200" alt="Three tips to sleep better tonight">](docs/media/sleep.mp4) | [<img src="docs/media/sky.jpg" width="200" alt="Why is the sky blue?">](docs/media/sky.mp4) |
+|:-:|:-:|:-:|
+| **How a honeybee makes honey**<br>Mid-century cartoon, 25 s | **Three tips to sleep better tonight**<br>Crayon picture book, 28 s | **Why is the sky blue?**<br>Coloured-pencil science, 27 s |
+
+<sub>Click a picture to play it. These copies are compressed for GitHub; your own videos come out at full quality.</sub>
+
 ## What you need
 - **Claude Code**, installed and signed in (`npm install -g @anthropic-ai/claude-code`, then run `claude` once).
 - **Node.js 20+**
