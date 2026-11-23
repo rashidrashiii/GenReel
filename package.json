@@ -17,7 +17,7 @@
     "lint": "eslint",
     "test": "node --import tsx --test test/*.test.ts",
     "check": "tsc --noEmit && eslint && npm test",
-    "prepack": "next build"
+    "prepack": "next build && node scripts/scrub-build.mjs"
   },
   "dependencies": {
     "ajv": "^8.17.1",
