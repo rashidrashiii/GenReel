@@ -3,7 +3,7 @@
 import { execFile, spawn } from "node:child_process";
 import { createWriteStream, existsSync } from "node:fs";
 import { cp, mkdir, readFile, rename, rm, writeFile } from "node:fs/promises";
-import { join } from "node:path";
+import { join, relative } from "node:path";
 import { Readable } from "node:stream";
 import { pipeline } from "node:stream/promises";
 import { promisify } from "node:util";
@@ -87,11 +87,15 @@ async function download(task: Task, url: string, dest: string) {
   await rename(tmp, dest);
 }
 
+/** Copy everything in the renderer except its own node_modules and out folders. Judged on the path
+ * inside the renderer: from npx, the app itself lives under .../node_modules/genreel/. */
+export const rendererFile = (src: string) => !/^(node_modules|out)([/\\]|$)/.test(relative(paths.rendererSrc, src));
+
 const STEPS: Record<string, (t: Task) => Promise<void>> = {
   /** Copy the app's Remotion project to ~/genreel/renderer, install its packages and its own headless browser. */
   async renderer(t) {
     await mkdir(paths.renderer, { recursive: true });
-    await cp(paths.rendererSrc, paths.renderer, { recursive: true, force: true, filter: (src) => !/[/\\](node_modules|out)([/\\]|$)/.test(src) });
+    await cp(paths.rendererSrc, paths.renderer, { recursive: true, force: true, filter: rendererFile });
     await sh(t, "npm", ["ci", "--no-audit", "--no-fund"], paths.renderer);
     // The renderer's own CLI, not npx: npx can resolve packages from somewhere else.
     await sh(t, process.execPath, [join(paths.renderer, "node_modules/@remotion/cli/remotion-cli.js"), "browser", "ensure"], paths.renderer);
