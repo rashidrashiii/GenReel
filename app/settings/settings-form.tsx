@@ -1,10 +1,13 @@
 "use client";
 import { useId, useState } from "react";
 import { useT } from "@/components/i18n";
+import { ModelPicker, type Model } from "./model-picker";
 
 type S = { scriptModel: string; videoModel: string; language: string; videoMinutes: number; hasElevenlabsKey: boolean };
 
-export function SettingsForm({ initial, models, home }: { initial: S; models: { id: string; label: string }[]; home: string }) {
+const MINUTES = [30, 45, 60, 90, 120];
+
+export function SettingsForm({ initial, models, home }: { initial: S; models: Model[]; home: string }) {
   const { t } = useT();
   const id = useId();
   const [s, setS] = useState(initial);
@@ -29,29 +32,26 @@ export function SettingsForm({ initial, models, home }: { initial: S; models: { 
     setMsg(res?.ok ? { text: "settings.keyWorks" } : { text: body?.error ?? "errors.network", error: true });
   }
 
-  const select = (field: "scriptModel" | "videoModel", label: string, help: string) => (
-    <div className="field">
-      <label htmlFor={`${id}-${field}`}>{label}</label>
-      <select id={`${id}-${field}`} value={s[field]} disabled={busy} onChange={(e) => void save({ [field]: e.target.value })} aria-describedby={`${id}-${field}-h`}>
-        {models.map((m) => <option key={m.id} value={m.id}>{m.label}</option>)}
-      </select>
-      <p className="help" id={`${id}-${field}-h`}>{help}</p>
-    </div>
-  );
-
   return (
     <>
       <section className="panel" aria-labelledby={`${id}-claude`}>
         <h2 id={`${id}-claude`} className="panel-h">{t("settings.claude")}</h2>
-        {select("videoModel", t("settings.videoModel"), t("settings.videoModelHelp"))}
-        {select("scriptModel", t("settings.scriptModel"), t("settings.scriptModelHelp"))}
-        <div className="field">
-          <label htmlFor={`${id}-min`}>{t("settings.minutes")}</label>
-          <input id={`${id}-min`} type="number" min={15} max={120} step={5} value={s.videoMinutes} disabled={busy}
-            onChange={(e) => setS({ ...s, videoMinutes: Number(e.target.value) })}
-            onBlur={() => void save({ videoMinutes: Math.min(120, Math.max(15, Math.round(s.videoMinutes))) })} aria-describedby={`${id}-min-h`} />
+        <ModelPicker legend={t("settings.videoModel")} help={t("settings.videoModelHelp")} value={s.videoModel} models={models} disabled={busy}
+          onChange={(v) => save({ videoModel: v })} />
+        <ModelPicker legend={t("settings.scriptModel")} help={t("settings.scriptModelHelp")} value={s.scriptModel} models={models} disabled={busy}
+          onChange={(v) => save({ scriptModel: v })} />
+        <fieldset aria-describedby={`${id}-min-h`}>
+          <legend>{t("settings.minutes")}</legend>
           <p className="help" id={`${id}-min-h`}>{t("settings.minutesHelp")}</p>
-        </div>
+          <div className="segmented">
+            {MINUTES.map((n) => (
+              <label key={n}>
+                <input type="radio" name={`${id}-min`} value={n} checked={s.videoMinutes === n} disabled={busy} onChange={() => void save({ videoMinutes: n })} />
+                <span>{t("settings.minutesN", { n })}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
       </section>
 
       <section className="panel" aria-labelledby={`${id}-voice`}>

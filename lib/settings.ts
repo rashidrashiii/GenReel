@@ -10,10 +10,17 @@ export type Settings = {
   videoMinutes: number; // time limit for one video session
 };
 
+/** Models offered in Settings (current Claude models; any other ID can be typed in as a custom model). */
 export const MODELS = [
-  { id: "claude-sonnet-5-5", label: "Sonnet (faster, uses less of your plan)" },
-  { id: "claude-opus-5-5", label: "Opus (best quality, uses more of your plan)" },
+  { id: "claude-sonnet-5-5", name: "Sonnet 5.5", note: "Fast and capable. A good default for scripts and videos.", speed: "Fast", use: "Moderate" },
+  { id: "claude-opus-5-5", name: "Opus 5.5", note: "Richer, more polished videos. Takes longer.", speed: "Slower", use: "High" },
+  { id: "claude-fable-5-2", name: "Fable 5.2", note: "Anthropic's most capable model. Slowest; may not be included in every plan.", speed: "Slowest", use: "Highest" },
+  { id: "claude-haiku-5-5", name: "Haiku 5.5", note: "Quickest and lightest. Fine for scripts; videos come out simpler.", speed: "Fastest", use: "Low" },
+  { id: "claude-opus-5", name: "Opus 5", note: "The previous Opus.", speed: "Slower", use: "High", older: true },
+  { id: "claude-sonnet-5", name: "Sonnet 5", note: "The previous Sonnet.", speed: "Fast", use: "Moderate", older: true },
 ];
+/** A model ID typed in by hand: Claude Code's --model accepts more than the list above. */
+export const isModelId = (s: string) => /^claude-[a-z0-9][a-z0-9.-]{1,60}$/.test(s);
 
 const DEFAULTS: Settings = { elevenlabsKey: null, scriptModel: "claude-sonnet-5-5", videoModel: "claude-sonnet-5-5", language: "en", videoMinutes: 60 };
 

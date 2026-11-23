@@ -86,3 +86,12 @@ test("restart: a job that was running when genreel stopped is marked failed with
   assert.equal(after.state, "failed");
   assert.equal(after.job!.error, "errors.interrupted");
 });
+
+test("settings: model list uses real IDs; custom IDs must look like a Claude model", async () => {
+  const { MODELS, isModelId } = await import("../lib/settings.ts");
+  assert.ok(MODELS.every((m) => isModelId(m.id)));
+  assert.ok(MODELS.some((m) => m.id === "claude-opus-5-5"));
+  assert.equal(isModelId("claude-opus-4-8"), true);
+  assert.equal(isModelId("gpt-5"), false);
+  assert.equal(isModelId("claude-x; rm -rf ~"), false);
+});
